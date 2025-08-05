@@ -6,9 +6,8 @@ let content = "                                   +#=            +*-            
 let newContent = ascii.textContent.split("");
 
 const FILLED_PROB = 100
-const EMPTY_PROB = 100000000
-const TIME_WAIT = 5
-let RUNNING = false
+const EMPTY_PROB = 1000000000
+const TIME_WAIT = 1
 
 function change() {
     for (let i = 0; i < content.length; i++) {
