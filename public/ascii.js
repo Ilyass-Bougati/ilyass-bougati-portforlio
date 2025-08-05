@@ -2,11 +2,11 @@ let grad = ".:-=+*#%@"
 let upperGrad = "*#%@"
 let lowerGrad = ".:-=+"
 let ascii = document.getElementsByClassName("ascii")[0]
-let content = ascii.textContent
-let newContent = content.split("");
+let content = "                                   +#=            +*-                                                                                             \n%%%:   -%%:               +*-      %@*            %@*                                                               **                            \n@@@#   -@@-               %@+      %@*            %@*                                                               @@                            \n@@@%.  -@@-               %@+      %@*                                                                              @@                            \n@@%@*  -@@-   =#%%#:   =##%@####   %@*+#%#.    -####=    :#*-#%#+     =#%#=*#:            =#*     *#=   =#%%#.   *##@@###*                        \n@@#@%  -@@-  *@@@@@%-  #@@@@@@@@   %@%@@@@%    +@@@@*    -@%%@@@@+   +%@@@%%@-            =@%.   :@@-  *@@@@@%-  %@@@@@@@%                        \n@@+%@* -@@- .%@%-=%@%  :--%@*---   %@@#=#@@=   .==%@*    -@@%++%@%   %@%-=%@@-             %@*   *@%  =@@#-*%@%  ---@@----                        \n@@++@% -@@- *@%   =@@-    %@+      %@%   %@*      %@*    -@@*  +@%  +@%.  +@@-             *@%   %@*  %@%   -@@-    @@                            \n@@+ %@*-@@- #@#    %@+    %@+      %@#   #@#      %@*    -@@:  :@@  *@%    %@-             :@@- =@%.  %@%%%%%%@+    @@                            \n@@+ *@%-@@- %@#    %@*    %@+      %@*   #@#      %@*    -@%    @@  #@#    %@-              %@# #@#   @@%%%%%%%*    @@                            \n@@+  %@*@@- #@#    %@*    %@+      %@*   #@#      %@*    -@%    @@  #@%    %@-              +@% %@=   %@=           @@                            \n@@+  *@%@@- #@%    %@=    %@+      %@*   #@#      %@*    -@%    @@  *@%   -@@-               %@#@%    %@*           @@.        %%%#   #%%%   *%%%-\n@@+   %@@@- +@@-  *@%.    %@#      %@*   #@#      %@*    -@%    @@  :@@*  #@@-               #@@@#    #@%.   .+     %@+        %@@%   %@@%   *@@@=\n@@+   *@@@-  %@%##@@#     *@@%%#   %@*   #@#   ###%@%##* -@%    @@   #@@%%@@@-               :@@@:    .%@%##%%%     %@@%%#     %@@%   %@@%   *@@@=\n@@+   .%@@-  :%@@@@#       #%@@@   %@*   #@#   @@@@@@@@% -@%    @@    #%@%#%@-                %@%      -%@@@@%#     -#%@@%     %@@%   %@@%   *@@@=\n               :+=.                                                     :  @@                 %@+        .++=                                     \n                                                                     ==   #@%                *@%                                                  \n                                                                     *@%%%@@+              #%@@*                                                  \n                                                                     +%%@%%+               %%%*                                                   \n"
+let newContent = ascii.textContent.split("");
 
 const FILLED_PROB = 100
-const EMPTY_PROB = 100000
+const EMPTY_PROB = 100000000
 const TIME_WAIT = 5
 let RUNNING = false
 
@@ -31,16 +31,4 @@ function change() {
     ascii.textContent = newContent.join("")
 }
 
-function asciiClickHandler() {
-    ascii.textContent = content
-    newContent = content.split("")
-}
-
-addEventListener("mouseover", (event) => {
-    if (event.toElement.className == "ascii" && !RUNNING) {
-        setInterval(change, TIME_WAIT)
-        RUNNING = true
-    }
-})
-
-
+setInterval(change, TIME_WAIT)
