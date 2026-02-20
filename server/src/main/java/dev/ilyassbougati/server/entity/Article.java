@@ -1,10 +1,13 @@
 package dev.ilyassbougati.server.entity;
 
+import dev.ilyassbougati.server.enums.ArticleStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import jakarta.validation.constraints.*;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,41 +15,31 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Project {
+public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    // TODO : add banner
-
-    @NotEmpty
-    private String title;
+    // TODO: add banner image
 
     @NotEmpty
     @Column(unique = true)
     private String slug;
 
     @NotEmpty
+    private String title;
+
+    @NotNull
+    private Integer readTime;
+
+    @NotEmpty
     @Column(columnDefinition = "TEXT")
-    private String description;
-
-    @NotEmpty
-    private String githubLink;
+    private String content;
 
     @NotNull
-    private Boolean githubPrivate;
+    private ArticleStatus status;
 
-    @NotEmpty
-    private String websiteLink;
-
-    @NotNull
-    private LocalDateTime startingDate;
-
-    @NotNull
-    private LocalDateTime finishingDate;
-
-    @NotNull
-    private Boolean unfinished;
+    private LocalDateTime publishedAt;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
